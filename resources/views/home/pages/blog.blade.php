@@ -42,7 +42,7 @@
                             <div class="card-header-b">
                                 <div class="card-title-b">
                                     <h2 class="title-2">
-                                        <a href="{{ route('home.blog_detail', $item->title) }}">{{ $item->title }}</a>
+                                        <a href="{{ route('home.blog_detail', $item->id) }}">{{ $item->title }}</a>
                                     </h2>
                                 </div>
                                 <div class="card-date">

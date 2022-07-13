@@ -39,9 +39,9 @@ class HomeController extends Controller
         return view('home.pages.blog', compact('blogs'));
     }
 
-    public function blog_detail($title)
+    public function blog_detail($id)
     {
-        $blog = Blog::firstWhere('title', $title);
+        $blog = Blog::firstWhere('id', $id);
         return view('home.pages.blog_detail', compact('blog'));
 
     }
