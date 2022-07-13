@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SettingInformationController;
@@ -57,6 +58,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'edit'])->name('teacher.edit');
     Route::post('admin/teacher/update/{id}', [TeacherController::class, 'update'])->name('teacher.update');
     Route::get('admin/teacher/destroy/{id}', [TeacherController::class, 'destroy'])->name('teacher.destroy');
+
+    Route::get('admin/calendar', [CalendarController::class, 'index'])->name('calendar.index');
+    Route::get('admin/calendar/create', [CalendarController::class, 'create'])->name('calendar.create');
+    Route::post('admin/calendar/store', [CalendarController::class, 'store'])->name('calendar.store');
+    Route::get('admin/calendar/show/{id}', [CalendarController::class, 'show'])->name('calendar.show');
+    Route::get('admin/calendar/edit/{id}', [CalendarController::class, 'edit'])->name('calendar.edit');
+    Route::post('admin/calendar/update/{id}', [CalendarController::class, 'update'])->name('calendar.update');
+    Route::get('admin/calendar/destroy/{id}', [CalendarController::class, 'destroy'])->name('calendar.destroy');
 
     Route::get('admin/setting/view', [SettingInformationController::class, 'view'])->name('setting.view');
     Route::post('admin/setting/update', [SettingInformationController::class, 'update'])->name('setting.update');

@@ -21,7 +21,6 @@ class SettingInformationController extends Controller
             'PAVICON' => 'image|file|max:2048',
             'ABOUT' => 'required',
             'STRUCTURAL' => 'image|file|max:2048',
-            'CALENDAR' => 'image|file|max:2048',
             'PHONE' => 'required',
             'EMAIL' => 'required|email',
             'ADDRESS' => 'required',
@@ -72,19 +71,6 @@ class SettingInformationController extends Controller
 
             SettingInformation::where('key', 'STRUCTURAL')
                 ->update(['value' => $request->file('STRUCTURAL')->store('uploads')]);
-        }
-
-        if ($request->file('CALENDAR')) {
-            $CALENDAR = SettingInformation::firstWhere('key', 'CALENDAR');
-            if ($CALENDAR->value) {
-                $full_path = public_path() . '/storage/uploads/' . basename($CALENDAR->value);
-                if (file_exists($full_path)) {
-                    unlink($full_path);
-                }
-            }
-
-            SettingInformation::where('key', 'CALENDAR')
-                ->update(['value' => $request->file('CALENDAR')->store('uploads')]);
         }
 
         if ($request->PHONE) {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
+use App\Models\Calendar;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class CalendarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(5);
-        return view('admin.pages.blog.index', compact('blogs'));
+        $calendars = Calendar::paginate(5);
+        return view('admin.pages.calendar.index', compact('calendars'));
     }
 
     /**
@@ -25,7 +25,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.blog.create');
+        return view('admin.pages.calendar.create');
     }
 
     /**
@@ -37,25 +37,20 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'body' => 'required',
             'image' => 'image|file|max:5000',
         ]);
 
-        $blog = new Blog();
-
-        $blog->title = $request->title;
-        $blog->body = $request->body;
+        $calendar = new Calendar();
 
         if ($request->file('image')) {
-            $blog->image = $request->file('image')->store('uploads');
+            $calendar->image = $request->file('image')->store('uploads');
         }
 
-        $blog->created_at = date('Y-m-d H:i:s');
+        $calendar->created_at = date('Y-m-d H:i:s');
 
-        $blog->save();
+        $calendar->save();
 
-        return redirect('admin/blog')->with('success', 'blog ' . $blog->title . ' successfully created!');
+        return redirect('admin/calendar')->with('success', 'calendar ' . $calendar->name . ' successfully created!');
     }
 
     /**
@@ -66,8 +61,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::firstWhere('id', $id);
-        return view('admin.pages.blog.show', compact('blog'));
+        $calendar = Calendar::firstWhere('id', $id);
+        return view('admin.pages.calendar.show', compact('calendar'));
     }
 
     /**
@@ -78,8 +73,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::firstWhere('id', $id);
-        return view('admin.pages.blog.edit', compact('blog'));
+        $calendar = Calendar::firstWhere('id', $id);
+        return view('admin.pages.calendar.edit', compact('calendar'));
     }
 
     /**
@@ -92,33 +87,27 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required',
-            'body' => 'required',
             'image' => 'image|file|max:5000',
         ]);
 
-        $blog = Blog::firstWhere('id', $id);
-
-        $blog->title = $request->title;
-        $blog->body = $request->body;
+        $calendar = Calendar::firstWhere('id', $id);
 
         if ($request->file('image')) {
-            if ($blog->image) {
-                $full_path = public_path() . '/storage/uploads/' . basename($blog->image);
+            if ($calendar->image) {
+                $full_path = public_path() . '/storage/uploads/' . basename($calendar->image);
                 if (file_exists($full_path)) {
                     unlink($full_path);
                 }
             }
 
-
-            $blog->image = $request->file('image')->store('uploads');
+            $calendar->image = $request->file('image')->store('uploads');
         }
 
-        $blog->updated_at = date('Y-m-d H:i:s');
+        $calendar->updated_at = date('Y-m-d H:i:s');
 
-        $blog->save();
+        $calendar->save();
 
-        return redirect('admin/blog')->with('success', 'blog ' . $blog->name . ' successfully updated!');
+        return redirect('admin/calendar')->with('success', 'calendar ' . $calendar->name . ' successfully updated!');
     }
 
     /**
@@ -129,14 +118,14 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog = Blog::firstWhere('id', $id);
-        $full_path = public_path() . '/storage/uploads/' . basename($blog->image);
+        $calendar = Calendar::firstWhere('id', $id);
+        $full_path = public_path() . '/storage/uploads/' . basename($calendar->image);
         if (file_exists($full_path)) {
             unlink($full_path);
         }
 
-        $blog->delete();
+        $calendar->delete();
 
-        return redirect('admin/blog')->with('success', 'blog ' . $blog->name . ' successfully deleted!');
+        return redirect('admin/calendar')->with('success', 'calendar '.$calendar->name.' successfully deleted!');
     }
 }

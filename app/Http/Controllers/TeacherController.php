@@ -129,7 +129,7 @@ class TeacherController extends Controller
             $teacher->image = $request->file('image')->store('uploads');
         }
 
-        $teacher->created_at = date('Y-m-d H:i:s');
+        $teacher->updated_at = date('Y-m-d H:i:s');
 
         $teacher->save();
 

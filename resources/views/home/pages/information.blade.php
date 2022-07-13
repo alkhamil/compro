@@ -38,7 +38,15 @@
             <div class="row py-3">
                 <h3>Kalender Sekolah</h3>
 
-                <img src="{{ asset('storage') .'/'.$settings['CALENDAR'] }}" class="img-fluid" alt="">
+                @foreach ($calendars as $item)
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{ asset('storage') .'/'.$item->image }}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
             <div class="row py-3">
                 <h3>Daftar Guru</h3>

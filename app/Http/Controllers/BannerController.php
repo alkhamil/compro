@@ -111,7 +111,7 @@ class BannerController extends Controller
             $banner->image = $request->file('image')->store('uploads');
         }
 
-        $banner->created_at = date('Y-m-d H:i:s');
+        $banner->updated_at = date('Y-m-d H:i:s');
 
         $banner->save();
 

@@ -75,17 +75,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="CALENDAR" class="form-label">CALENDAR</label>
-                                    <input type="file" name="CALENDAR" value="{{ $settings['CALENDAR'] }}"
-                                        class="form-control @error('CALENDAR') is-invalid @enderror">
-
-                                    <img width="250" src="{{ asset('storage') . '/' . $settings['CALENDAR'] }}"
-                                        class="mt-3 img-fluid img-thumbnail" alt="CALENDAR">
-                                    @error('CALENDAR')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="form-group mb-3">
                                     <label for="PHONE" class="form-label">PHONE</label>
                                     <input type="text" name="PHONE" value="{{ $settings['PHONE'] }}"
                                         class="form-control @error('PHONE') is-invalid @enderror">

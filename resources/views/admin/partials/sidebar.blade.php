@@ -44,6 +44,14 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link @if (!request()->is('admin/calendar')) collapsed @endif"
+                href="{{ url('admin/calendar') }}">
+                <i class="bi bi-calendar"></i>
+                <span>Calendar</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link @if (!request()->is('admin/setting')) collapsed @endif"
                 href="{{ url('admin/setting/view') }}">
                 <i class="bi bi-gear"></i>

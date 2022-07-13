@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Blog;
+use App\Models\Calendar;
 use App\Models\SettingInformation;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -27,8 +28,9 @@ class HomeController extends Controller
     public function information()
     {
         $settings = SettingInformation::pluck('value', 'key');
+        $calendars = Calendar::paginate(5);
         $teachers = Teacher::paginate(5);
-        return view('home.pages.information', compact('settings', 'teachers'));
+        return view('home.pages.information', compact('settings', 'teachers', 'calendars'));
     }
 
     public function blog()
