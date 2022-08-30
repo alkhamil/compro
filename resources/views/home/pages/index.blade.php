@@ -71,7 +71,8 @@
                                         </h2>
                                     </div>
                                     <div class="card-date">
-                                        <span class="date-b">{{ date('d M. Y', strtotime($item->created_at)) }}</span>
+                                        <span class="date-b">{{ date('d M. Y', strtotime($item->created_at)) }}</span><br>
+                                        <b>Dibuat oleh: {{ $item->user->fullname }}</b>
                                     </div>
                                 </div>
                             </div>

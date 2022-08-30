@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -46,6 +47,7 @@ class BlogController extends Controller
 
         $blog->title = $request->title;
         $blog->body = $request->body;
+        $blog->user_id = Auth::user()->id;
 
         if ($request->file('image')) {
             $blog->image = $request->file('image')->store('uploads');
@@ -101,6 +103,7 @@ class BlogController extends Controller
 
         $blog->title = $request->title;
         $blog->body = $request->body;
+        $blog->user_id = Auth::user()->id;
 
         if ($request->file('image')) {
             if ($blog->image) {
