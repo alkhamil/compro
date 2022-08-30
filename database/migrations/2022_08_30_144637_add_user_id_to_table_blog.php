@@ -15,7 +15,7 @@ class AddUserIdToTableBlog extends Migration
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            if (!Schema::hasColumn('user_id')) {
+            if (!Schema::hasColumn('blogs', 'user_id')) {
                 $table->integer('user_id');
             }
         });
@@ -31,7 +31,7 @@ class AddUserIdToTableBlog extends Migration
     public function down()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            if (Schema::hasColumn('user_id')) {
+            if (Schema::hasColumn('blogs', 'user_id')) {
                 $table->dropColumn('user_id');
             }
         });
