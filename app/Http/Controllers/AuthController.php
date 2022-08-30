@@ -17,11 +17,11 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $request->validate([
-            'nik' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
-        $user = User::firstWhere('nik', $request->nik);
+        $user = User::firstWhere('username', $request->username);
 
         if (!$user) {
             return back()->with('error', 'User Not Found!');

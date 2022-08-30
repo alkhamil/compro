@@ -43,11 +43,11 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="nik" class="form-label">NIK</label>
-                                    <input type="text" name="nik" value="{{ old('nik') }}"
-                                        class="form-control @error('nik') is-invalid @enderror">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" name="username" value="{{ old('username') }}"
+                                        class="form-control @error('username') is-invalid @enderror">
     
-                                    @error('nik')
+                                    @error('username')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

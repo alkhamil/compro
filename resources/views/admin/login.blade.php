@@ -67,9 +67,9 @@
                   <form method="POST" action="{{ route('authenticate') }}" class="row g-3 needs-validation" novalidate>
                     @csrf
                     <div class="col-12">
-                      <label for="yourNik" class="form-label">NIK</label>
-                      <input type="text" name="nik" class="form-control" id="yourNik" required>
-                      <div class="invalid-feedback">Please enter your NIK.</div>
+                      <label for="yourUsername" class="form-label">Username</label>
+                      <input type="text" name="username" class="form-control" id="yourUsername" required>
+                      <div class="invalid-feedback">Please enter your username.</div>
                     </div>
 
                     <div class="col-12">

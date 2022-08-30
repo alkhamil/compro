@@ -36,7 +36,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Fullname</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">NIK</th>
+                                <th scope="col">Username</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col" class="text-center">Action</th>
@@ -51,7 +51,7 @@
                                 <th scope="row">{{ $i+1 }}</th>
                                 <td>{{ $item->fullname }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>{{ $item->nik }}</td>
+                                <td>{{ $item->username }}</td>
                                 <td>
                                     <div class="badge 
                                         @if ($item->role == 'ADMIN')

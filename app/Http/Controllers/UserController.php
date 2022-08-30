@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         $request->validate([
             'fullname' => 'required',
-            'nik' => 'required|unique:users',
+            'username' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required',
             'role' => 'required',
@@ -50,7 +50,7 @@ class UserController extends Controller
 
         $user->fullname = $request->fullname;
         $user->email = $request->email;
-        $user->nik = $request->nik;
+        $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->role = $request->role;
         $user->created_at = date('Y-m-d H:i:s');

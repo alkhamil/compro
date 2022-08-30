@@ -26,7 +26,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Auth::user()->email }}</h6>
-              <span>{{ Auth::user()->nik }}</span>
+              <span>{{ Auth::user()->username }}</span>
             </li>
             <li>
               <hr class="dropdown-divider">
