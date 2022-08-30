@@ -39,7 +39,7 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
-        return redirect()->intended('admin/banner');
+        return redirect()->intended('admin/dashboard');
     }
 
     public function logout(Request $request)
