@@ -54,7 +54,7 @@
                                 <td>
                                     <img src="{{ asset('storage') . '/' . $item->image }}" width="100" alt="image">
                                 </td>
-                                <td>{{ $item->user->fullname }}</td>
+                                <td>{{ isset($item->user->fullname) ? $item->user->fullname : '-' }}</td>
                                 <td>{{ date('d M Y', strtotime($item->created_at)) }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('blog.show', $item->id) }}" class="btn btn-sm btn-info">

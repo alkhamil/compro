@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="card-date">
                                         <span class="date-b">{{ date('d M. Y', strtotime($item->created_at)) }}</span><br>
-                                        <b>Dibuat oleh: {{ $item->user->fullname }}</b>
+                                        <b>Dibuat oleh: {{ isset($item->user->fullname) ? $item->user->fullname : '-' }}</b>
                                     </div>
                                 </div>
                             </div>
